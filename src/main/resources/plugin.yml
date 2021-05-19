@@ -1,0 +1,12 @@
+name: AlonsoLeagueRewards
+version: ${project.version}
+main: abhigya.alonsoleagueaddon.Main
+author: AvengerAK
+softdepend: [AlonsoLeagues]
+commands:
+  alonsoreward:
+    description: Basic plugin command
+    aliases:
+      - ar
+      - areward
+      - alonsorewards
