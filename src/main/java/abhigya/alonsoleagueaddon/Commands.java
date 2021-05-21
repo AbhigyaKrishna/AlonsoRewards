@@ -81,7 +81,7 @@ public class Commands implements CommandExecutor {
             }
             //Help command
             else if (args[0].equalsIgnoreCase("help")) {
-                sender.sendMessage(ChatColor.AQUA + "======================= AlonsoRewards =======================");
+                sender.sendMessage(ChatColor.AQUA + "=================== AlonsoLeagues Rewards ===================");
                 sender.sendMessage(ChatColor.AQUA + "alonsoreward help: " + ChatColor.YELLOW + "Show help message");
                 sender.sendMessage(ChatColor.AQUA + "alonsoreward resetconfig: " + ChatColor.YELLOW + "Reset the config file.");
                 sender.sendMessage(ChatColor.AQUA + "alonsoreward import: " + ChatColor.YELLOW + "Import leagues from Alonso League Plugin");
@@ -92,6 +92,16 @@ public class Commands implements CommandExecutor {
 
                 return true;
             }
+        }
+        else {
+            sender.sendMessage(ChatColor.AQUA + "=================== AlonsoLeagues Rewards ===================");
+            sender.sendMessage(ChatColor.AQUA + "alonsoreward help: " + ChatColor.YELLOW + "Show help message");
+            sender.sendMessage(ChatColor.AQUA + "alonsoreward resetconfig: " + ChatColor.YELLOW + "Reset the config file.");
+            sender.sendMessage(ChatColor.AQUA + "alonsoreward import: " + ChatColor.YELLOW + "Import leagues from Alonso League Plugin");
+            sender.sendMessage(ChatColor.AQUA + "alonsoreward reload: " + ChatColor.YELLOW + "Reload plugin");
+            sender.sendMessage("");
+            sender.sendMessage(ChatColor.AQUA + "Aliases: " + ChatColor.YELLOW + "ar, areward, alonsorewards");
+            sender.sendMessage(ChatColor.AQUA + "=============================================================");
         }
 
         return false;

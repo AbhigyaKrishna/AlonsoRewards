@@ -1,6 +1,9 @@
 package abhigya.alonsoleagueaddon;
 
 import com.alonsoaliaga.alonsoleagues.api.AlonsoLeaguesAPI;
+import org.bstats.bukkit.Metrics;
+import org.bstats.charts.SingleLineChart;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -9,6 +12,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
+import java.util.concurrent.Callable;
 
 public final class Main extends JavaPlugin {
 
@@ -18,6 +22,7 @@ public final class Main extends JavaPlugin {
 
     //Plugin prefix
     public static final String prefix = ChatColor.YELLOW + "[AlonsoLeagues] ";
+    public static final int pluginId = 11425;
 
     @Override
     public void onEnable() {
@@ -31,6 +36,8 @@ public final class Main extends JavaPlugin {
             this.getServer().getPluginManager().disablePlugin(this);
             return;
         }
+
+        metrics();
 
         loadConfig();
 
@@ -95,6 +102,20 @@ public final class Main extends JavaPlugin {
                 System.out.println(prefix + ChatColor.RED + "Something went wrong config file not created!");
             }
         }
+    }
+
+    /**
+     * Metrics
+     */
+    private void metrics() {
+        Metrics metrics = new Metrics(this, pluginId);
+        metrics.addCustomChart(new SingleLineChart("alonsoleague_rewards_players", new Callable<Integer>() {
+            @Override
+            public Integer call() throws Exception {
+                return Bukkit.getOnlinePlayers().size();
+            }
+        }));
+
     }
 
     public static Main getInstance() {
