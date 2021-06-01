@@ -21,7 +21,7 @@ public final class Main extends JavaPlugin {
     private File configFile;
 
     //Plugin prefix
-    public static final String prefix = ChatColor.YELLOW + "[AlonsoLeagues] ";
+    public static final String prefix = ChatColor.YELLOW + "[AlonsoLeaguesRewards] ";
     public static final int pluginId = 11425;
 
     @Override
@@ -45,7 +45,7 @@ public final class Main extends JavaPlugin {
         System.out.println(prefix + ChatColor.GREEN + "Registering Listener...");
         this.getServer().getPluginManager().registerEvents(new LeagueListener(), this);
         System.out.println(prefix + ChatColor.GREEN + "Registering Command...");
-        this.getCommand("alonsoreward").setExecutor(new Commands());
+        this.getCommand("leaguerewards").setExecutor(new Commands());
         System.out.println(prefix + ChatColor.AQUA + "Plugin by " + ChatColor.GOLD + "" + ChatColor.BOLD + this.getDescription().getAuthors().get(0));
 
     }

@@ -45,7 +45,23 @@ public class LeagueListener implements Listener {
         //Execute player commands
         for (String cmd : playerCommands) {
             String command = configuration.formatText(cmd, player.getName(), newLeague, oldLeague, points);
-            plugin.getServer().dispatchCommand(player, command);
+            if (configuration.isOperatorCommand(command)) {
+                command = Configuration.toLowerCase(command, "[op]")
+                        .replace("[op]", "").trim();
+                if (player.isOp()) {
+                    player.performCommand(command);
+                } else {
+                    try {
+                        player.setOp(true);
+                        player.performCommand(command);
+                    } catch (Exception ignored) {}
+                    finally {
+                        player.setOp(false);
+                    }
+                }
+                continue;
+            }
+            player.performCommand(command);
         }
 
         //Send message to player
@@ -76,19 +92,47 @@ public class LeagueListener implements Listener {
 
         //Execute console commands
         for (String cmd : consoleCommands) {
-            String command = cmd.replaceAll("(?i)[player]", player.getName()).replaceAll("(?i)[points]", String.valueOf(points));
+            String command = Configuration.toLowerCase(cmd, "[player]")
+                    .replace("[player]", player.getName());
+            command = Configuration.toLowerCase(command, "[points]")
+                    .replace("[points]", String.valueOf(points));
+
             plugin.getServer().dispatchCommand(plugin.getServer().getConsoleSender(), command);
         }
 
         //Execute player commands
         for (String cmd : playerCommands) {
-            String command = cmd.replaceAll("(?i)[player]", player.getName()).replaceAll("(?i)[points]", String.valueOf(points));
+            String command = Configuration.toLowerCase(cmd, "[player]")
+                    .replace("[player]", player.getName());
+            command = Configuration.toLowerCase(command, "[points]")
+                    .replace("[points]", String.valueOf(points));
+
+            if (configuration.isOperatorCommand(command)) {
+                command = Configuration.toLowerCase(command, "[op]")
+                        .replace("[op]", "").trim();
+                if (player.isOp()) {
+                    player.performCommand(command);
+                } else {
+                    try {
+                        player.setOp(true);
+                        player.performCommand(command);
+                    } catch (Exception ignored) {}
+                    finally {
+                        player.setOp(false);
+                    }
+                }
+                continue;
+            }
             plugin.getServer().dispatchCommand(player, command);
         }
 
         //Send message to player
         for (String msg : messages) {
-            String message = msg.replaceAll("(?i)[player]", player.getName()).replaceAll("(?i)[points]", String.valueOf(points));
+            String message = Configuration.toLowerCase(msg, "[player]")
+                    .replace("[player]", player.getName());
+            message = Configuration.toLowerCase(message, "[points]")
+                    .replace("[points]", String.valueOf(points));
+
             player.sendMessage(ChatColor.translateAlternateColorCodes('&', message));
         }
     }

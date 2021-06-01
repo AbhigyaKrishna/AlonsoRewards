@@ -3,8 +3,8 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>abhigya</groupId>
   <artifactId>AlonsoLeagueRewards</artifactId>
-  <name>AlonsoLeagueAddon</name>
-  <version>1.2</version>
+  <name>AlonsoLeagueRewards</name>
+  <version>1.3</version>
   <build>
     <plugins>
       <plugin>

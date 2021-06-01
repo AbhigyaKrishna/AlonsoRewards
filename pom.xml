@@ -6,10 +6,10 @@
 
     <groupId>abhigya</groupId>
     <artifactId>AlonsoLeagueRewards</artifactId>
-    <version>1.2</version>
+    <version>1.3</version>
     <packaging>jar</packaging>
 
-    <name>AlonsoLeagueAddon</name>
+    <name>AlonsoLeagueRewards</name>
 
     <properties>
         <java.version>1.8</java.version>
